@@ -8,6 +8,11 @@
 #include    <QCoreApplication>
 #include    <Qlabel>
 #include    <QTextCharFormat>
+#include    <QMessageBox>
+
+#define APP_AUTHOR_NAME     "罗棕辉"          //姓名
+#define APP_STUDENT_ID      "2024414290230"      //学号
+#define APP_CLASS_NAME      "软件工程2班"   //班级
 
 
 void QWMainWind::updateCurFile(QString aFile)
@@ -136,6 +141,17 @@ void QWMainWind::on_comboFont_currentIndexChanged(const QString &arg1)
     ui->txtEdit->mergeCurrentCharFormat(fmt);
 }
 
+
+void QWMainWind::on_actAbout_triggered()
+{//显示"关于"窗口，输出姓名、学号等信息
+    QString info;
+    info +=tr("姓名：")+QString(APP_AUTHOR_NAME)+tr("\n");
+    info +=tr("学号：")+QString(APP_STUDENT_ID)+tr("\n");
+    info +=tr("班级：")+QString(APP_CLASS_NAME)+tr("\n");
+    info +=tr("开发环境：Qt ")+QString(qVersion());
+
+    QMessageBox::about(this, tr("关于本程序"), info);
+}
 
 void QWMainWind::on_actToolbarLab_triggered(bool checked)
 {
